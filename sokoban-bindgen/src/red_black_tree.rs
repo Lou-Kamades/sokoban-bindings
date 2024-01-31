@@ -1,8 +1,5 @@
 pub use sokoban::{FromSlice, NodeAllocatorMap, RedBlackTree};
 
-pub const SUCCESS: u32 = 0;
-pub const FAILURE: u32 = u32::MAX;
-
 #[macro_export]
 macro_rules! red_black_tree_bindings {
     ($key:ty, $value:ty, $size:literal) => {

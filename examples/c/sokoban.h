@@ -3,9 +3,13 @@
 #include <stdint.h>
 #include <stdlib.h>
 
+typedef struct HashTableu64u64128128 HashTableu64u64128128;
+
 typedef struct RedBlackTreeu64u64128 RedBlackTreeu64u64128;
 
 extern const uintptr_t RedBlackTreeu64u64128SIZE;
+
+extern const uintptr_t HashTableu64u64128128SIZE;
 
 void initialize(struct RedBlackTreeu64u64128 *slf);
 
@@ -28,3 +32,25 @@ uint32_t c_get(struct RedBlackTreeu64u64128 *slf, const uint64_t *key, uint64_t 
  * which is potentially uninitialized
  */
 uint32_t c_remove(struct RedBlackTreeu64u64128 *slf, const uint64_t *key, uint64_t *value);
+
+void initialize_table(struct HashTableu64u64128128 *slf);
+
+struct HashTableu64u64128128 *initialize_table_in(uint8_t *bytes, uintptr_t len);
+
+uint32_t table_insert(struct HashTableu64u64128128 *slf, uint64_t key, uint64_t value);
+
+/**
+ * Returns 0 if successful, u32::MAX if failure.
+ *
+ * If this fails, the given pointer will point to whatever was there before,
+ * which is potentially uninitialized
+ */
+uint32_t table_get(struct HashTableu64u64128128 *slf, const uint64_t *key, uint64_t *value);
+
+/**
+ * Returns 0 if successful, u32::MAX if failure.
+ *
+ * If this fails, the given pointer will point to whatever was there before,
+ * which is potentially uninitialized
+ */
+uint32_t table_remove(struct HashTableu64u64128128 *slf, const uint64_t *key, uint64_t *value);
